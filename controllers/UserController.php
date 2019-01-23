@@ -123,3 +123,13 @@ function saveUserInfo()
         exit ('Invalid data!');
     }
 }
+
+/**
+ * @param $id
+ */
+function deleteUser($id)
+{
+    $response = modelRemoveUser($id);
+
+    echo $response ? 'success' : 'error';
+}

@@ -3,12 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title><?php echo $data['username']; ?> - Edit</title>
-
-    <style>
-        table, th, td {
-            border: 1px solid black;
-        }
-    </style>
 </head>
 <body>
 <h1>Edit user <?php echo $data['username']; ?></h1>

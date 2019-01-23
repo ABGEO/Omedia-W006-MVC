@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>All Users</title>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="../public/js/main.js"></script>
+
     <style>
         table, th, td {
             border: 1px solid black;
@@ -37,13 +41,13 @@
             <td><?php echo $user['lastName']; ?></td>
             <td>
                 <a href="/editUser/<?php echo $user['id']; ?>">Edit</a> /
-                <a href="#">Delete</a>
+                <a href="#" onclick="removeUser('<?php echo $user['id']; ?>');">Delete</a>
             </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
 </table>
-<br />
+<br/>
 <a href="/addUser">Add new user</a>
 </body>
 </html>

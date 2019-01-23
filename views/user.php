@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title><?php echo $data['username']; ?> - Profile</title>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="../public/js/main.js"></script>
+
     <style>
         table, th, td {
             border: 1px solid black;
@@ -38,7 +42,7 @@
 
 <div>
     <a href="/editUser/<?php echo $data['id']; ?>">Edit User</a> |
-    <a href="#">Delete User</a>
+    <a href="#" onclick="removeUser('<?php echo $data['id']; ?>');">Delete User</a>
 </div>
 
 </body>

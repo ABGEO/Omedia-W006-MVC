@@ -72,3 +72,14 @@ function modelEditUser($data, $identifier)
 
     return update($query);
 }
+
+/**
+ * @param $id
+ * @return bool|mysqli_result
+ */
+function modelRemoveUser($id)
+{
+    $query = sprintf("DELETE FROM users WHERE id = %d", $id);
+
+    return update($query);
+}
