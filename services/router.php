@@ -1,4 +1,9 @@
 <?php
+/**
+ * @param $method
+ * @param $request
+ * @return bool
+ */
 function CompareRoute($method, $request)
 {
     if (!(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == $method))
@@ -10,16 +15,49 @@ function CompareRoute($method, $request)
     return true;
 }
 
+/**
+ * @param $method
+ * @param $request
+ * @param $action
+ */
 function Route($method, $request, $action)
 {
-    if (CompareRoute($method, $request)) {
-        $action = explode('@', $action);
+    if (strpos($request, '{') !== false) {
+        if (isset($_SERVER['PATH_INFO'])) {
+            $lPosRequest = strpos($request, '/');
+            $rPosRequest = strpos($request, '/', $lPosRequest + 1);
 
-        $controller = $action[0];
-        $function = $action[1];
+            $strRequest = substr($request, $lPosRequest + 1, $rPosRequest - 1);
 
-        require_once __ROOT__ . "/controllers/{$controller}.php";
+            $lPosPath = strpos($_SERVER['PATH_INFO'], '/');
+            $rPosPath = strpos($_SERVER['PATH_INFO'], '/', $lPosPath + 1);
 
-        $function();
+            $strPath = substr($_SERVER['PATH_INFO'], $lPosPath + 1, $rPosPath - 1);
+
+            if ($strRequest == $strPath) {
+                $argument = substr($_SERVER['PATH_INFO'],   $rPosPath + 1);
+
+                $action = explode('@', $action);
+
+                $controller = $action[0];
+                $function = $action[1];
+
+                require_once __ROOT__ . "/controllers/{$controller}.php";
+
+                $function($argument);
+            }
+        }
+    } else {
+        if (CompareRoute($method, $request)) {
+            $action = explode('@', $action);
+
+            $controller = $action[0];
+            $function = $action[1];
+
+            require_once __ROOT__ . "/controllers/{$controller}.php";
+
+            $function(1);
+        }
     }
+
 }

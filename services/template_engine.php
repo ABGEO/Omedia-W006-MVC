@@ -1,7 +1,12 @@
 <?php
+/**
+ * @param $view
+ * @param null $data
+ * @return mixed
+ */
 function render($view, $data = null)
 {
     $templatesFolder = __ROOT__ . "/views";
 
-    require_once "$templatesFolder/$view";
+    return require_once "$templatesFolder/$view";
 }

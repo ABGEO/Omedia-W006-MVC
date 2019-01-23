@@ -4,6 +4,9 @@ define('USER', 'root');
 define('PASS', 'MYSQLPassword!2#');
 define('DB', 'omediaTraining_mvc');
 
+/**
+ * @return mysqli
+ */
 function connect()
 {
     $conn = mysqli_connect(HOST, USER, PASS, DB);
@@ -14,6 +17,10 @@ function connect()
     return $conn;
 }
 
+/**
+ * @param $query
+ * @return array|null
+ */
 function get($query)
 {
     $conn = connect();
