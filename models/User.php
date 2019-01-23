@@ -3,6 +3,32 @@
 require_once __ROOT__ . '/services/db_connection.php';
 
 /**
+ * @param $data
+ * @return bool|mysqli_result
+ */
+function modelAddUser($data)
+{
+    $query = "INSERT INTO users ";
+    $cols = '';
+    $values = '';
+
+    $count = count($data);
+    $iterator = 0;
+    foreach ($data as $k => $v) {
+        $iterator++;
+
+        $separator = $iterator == $count ? ' ' : ', ';
+
+        $cols .= sprintf("`%s` %s", $k, $separator);
+        $values .= sprintf("'%s' %s", $v, $separator);
+    }
+
+    $query = "$query ($cols) VALUES($values)";
+
+    return update($query);
+}
+
+/**
  * @return array|null
  */
 function modelGetAllUsers()

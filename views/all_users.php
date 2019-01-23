@@ -43,5 +43,7 @@
     <?php endforeach; ?>
     </tbody>
 </table>
+<br />
+<a href="/addUser">Add new user</a>
 </body>
 </html>

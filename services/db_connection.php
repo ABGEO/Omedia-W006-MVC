@@ -33,11 +33,6 @@ function get($query)
     return $data;
 }
 
-function set($query)
-{
-
-}
-
 /**
  * @param $query
  * @return bool|mysqli_result
