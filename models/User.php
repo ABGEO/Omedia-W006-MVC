@@ -22,3 +22,27 @@ function modelGetUser($userID)
 
     return get($query);
 }
+
+/**
+ * @param $data
+ * @param $identifier
+ * @return bool|mysqli_result
+ */
+function modelEditUser($data, $identifier)
+{
+    $query = "UPDATE users SET ";
+
+    $count = count($data);
+    $iterator = 0;
+    foreach ($data as $k => $v) {
+        $iterator++;
+
+        $separator = $iterator == $count ? ' ' : ', ';
+
+        $query .= sprintf("`%s` = '%s' %s", $k, $v, $separator);
+    }
+
+    $query .= sprintf("WHERE id = %d;", $identifier);
+
+    return update($query);
+}

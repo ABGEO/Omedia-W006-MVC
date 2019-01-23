@@ -38,9 +38,18 @@ function set($query)
 
 }
 
+/**
+ * @param $query
+ * @return bool|mysqli_result
+ */
 function update($query)
 {
+    $conn = connect();
+    $result = mysqli_query($conn, $query);
 
+    mysqli_close($conn);
+
+    return $result;
 }
 
 function remove($table, $id)

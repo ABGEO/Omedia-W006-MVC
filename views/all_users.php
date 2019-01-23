@@ -11,6 +11,9 @@
     </style>
 </head>
 <body>
+
+<h1>All users</h1>
+
 <table>
     <thead>
     <tr>
@@ -33,7 +36,8 @@
             <td><?php echo $user['firstName']; ?></td>
             <td><?php echo $user['lastName']; ?></td>
             <td>
-                <a href="#">Edit</a> / <a href="#">Delete</a>
+                <a href="/editUser/<?php echo $user['id']; ?>">Edit</a> /
+                <a href="#">Delete</a>
             </td>
         </tr>
     <?php endforeach; ?>

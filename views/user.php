@@ -37,7 +37,7 @@
 </table>
 
 <div>
-    <a href="#">Edit User</a> |
+    <a href="/editUser/<?php echo $data['id']; ?>">Edit User</a> |
     <a href="#">Delete User</a>
 </div>
 
